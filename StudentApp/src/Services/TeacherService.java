@@ -48,6 +48,11 @@ public class TeacherService implements iPersonService<Teacher> {
     }
 
 
+    /**
+     * Метод присваивания нового значения переменной list
+     *
+     * @param list - присваиваемое значение
+     */
     public void setTeacherList(List<Teacher> list) {
         this.listTeachers = list;
     }
