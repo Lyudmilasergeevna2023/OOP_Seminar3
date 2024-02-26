@@ -2,9 +2,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import Domain.Employee;
 import Domain.Student;
 import Domain.StudentGroup;
 import Domain.StudentSteam;
+import Domain.Teacher;
+import Services.TeacherService;
+import controllers.AccountController;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -81,7 +85,7 @@ public class App {
             System.out.println(studentGroup);
         }
 
-        // Вывод групп студентов потока 1 на консоль
+        // Вывод групп студентов потока 2 на консоль
         System.out.println("Студенты групп потока 2:");
         for (StudentGroup studentGroup : studentSteam2) {
             System.out.println(studentGroup);
@@ -95,6 +99,42 @@ public class App {
         for (StudentGroup studentGroup : studentSteam1) {
             System.out.println(studentGroup);
         }
+
+
+
+        System.out.println("______Seminar4______");
+
+        Employee worker1 = new Employee("Иванов", 55, "ректор");
+        Employee worker2 = new Employee("Зайцева", 40, "бухгалтер");
+        Employee worker3 = new Employee("Новиков", 40, "охранник");
+        List<Employee> listEmployee = new ArrayList<>(); // создаем список сотрудников
+        listEmployee.add(worker1);
+        listEmployee.add(worker2);
+        listEmployee.add(worker3);
+
+        Teacher teacher1 = new Teacher("Владимир Александрович", 60, "доцент");
+        Teacher teacher2 = new Teacher("Сергей Николаевич", 63, "старший преподаватель");
+        Teacher teacher3 = new Teacher("Михаил Александрович", 28, "ассистент");
+        Teacher teacher4 = new Teacher("Валентина Алексеевна", 85, "профессор");
+        List<Teacher> listTeachers = new ArrayList<>(); //создаем список преподавателей
+        listTeachers.add(teacher1);
+        listTeachers.add(teacher2);
+        listTeachers.add(teacher3);
+        listTeachers.add(teacher4);
+
+        TeacherService teacherServiceList = new TeacherService();
+        teacherServiceList.setTeacherList(listTeachers); // передаем в экземпляр TeacherService список преподавателей для сортировки
+        teacherServiceList.printSortTeachers(); // выполняем сортировку и вывод на консоль списка преподавателей
+
+        System.out.print("Преподаватели: ");
+        AccountController.averageAge(listTeachers); // вывод среднего возраста преподавателей
+
+        System.out.print("Студенты: ");
+        AccountController.averageAge(students2); // вывод среднего возраста студентов
+
+        System.out.print("Сотрудники: ");
+        AccountController.averageAge(listEmployee); // вывод среднего возраста сотрудников
+
     }
 }
  
